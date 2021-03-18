@@ -46,7 +46,8 @@ class GalleryAdapter : ListAdapter<GirlPhoto, GalleryAdapter.VH>(diff) {
 
         viewHolder.itemView.setOnClickListener {
             Bundle().apply {
-                putParcelable("Photo", getItem(viewHolder.adapterPosition))
+                putParcelableArrayList("PhotoList", ArrayList(currentList))
+                putInt("PhotoPosition", viewHolder.adapterPosition)
                 Navigation.findNavController(it)
                     .navigate(R.id.action_galleryFragment_to_photoFragment, this)
             }

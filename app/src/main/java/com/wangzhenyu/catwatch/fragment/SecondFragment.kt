@@ -8,22 +8,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.wangzhenyu.catwatch.R
-import com.wangzhenyu.catwatch.databinding.SecondFragmentBinding
+import com.wangzhenyu.catwatch.databinding.FSecondFragmentBinding
 
 class SecondFragment : Fragment() {
 
 
-    private lateinit var binding: SecondFragmentBinding
+    private lateinit var binding: FSecondFragmentBinding
     private lateinit var viewModel: SecondViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.second_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.f_second_fragment, container, false)
         return binding.root
     }
 

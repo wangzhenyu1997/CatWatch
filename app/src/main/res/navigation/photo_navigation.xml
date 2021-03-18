@@ -9,7 +9,7 @@
         android:id="@+id/galleryFragment"
         android:name="com.wangzhenyu.catwatch.fragment.GalleryFragment"
         android:label="画廊"
-        tools:layout="@layout/gallery_fragment">
+        tools:layout="@layout/f_gallery_fragment">
         <action
             android:id="@+id/action_galleryFragment_to_photoFragment"
             app:destination="@id/photoFragment" />
@@ -18,15 +18,15 @@
         android:id="@+id/photoFragment"
         android:name="com.wangzhenyu.catwatch.fragment.PhotoFragment"
         android:label="照片"
-        tools:layout="@layout/photo_fragment" />
+        tools:layout="@layout/f_photo_fragment" />
     <fragment
         android:id="@+id/secondFragment"
         android:name="com.wangzhenyu.catwatch.fragment.SecondFragment"
         android:label="第二"
-        tools:layout="@layout/second_fragment" />
+        tools:layout="@layout/f_second_fragment" />
     <fragment
         android:id="@+id/thirdFragment"
         android:name="com.wangzhenyu.catwatch.fragment.ThirdFragment"
         android:label="第三"
-        tools:layout="@layout/third_fragment" />
+        tools:layout="@layout/f_third_fragment" />
 </navigation>
