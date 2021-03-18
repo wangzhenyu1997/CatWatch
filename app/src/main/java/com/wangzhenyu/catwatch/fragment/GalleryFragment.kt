@@ -28,10 +28,10 @@ class GalleryFragment : Fragment() {
     private lateinit var galleryAdapter: GalleryAdapter
 
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.gallery_menu, menu)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        super.onCreateOptionsMenu(menu, inflater)
+//        inflater.inflate(R.menu.gallery_menu, menu)
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +53,7 @@ class GalleryFragment : Fragment() {
         }
 
 
-        setHasOptionsMenu(true)
+       // setHasOptionsMenu(true)
 
         return binding.root
     }

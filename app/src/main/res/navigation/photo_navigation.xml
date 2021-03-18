@@ -17,6 +17,16 @@
     <fragment
         android:id="@+id/photoFragment"
         android:name="com.wangzhenyu.catwatch.fragment.PhotoFragment"
-        android:label="图片"
+        android:label="照片"
         tools:layout="@layout/photo_fragment" />
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.wangzhenyu.catwatch.fragment.SecondFragment"
+        android:label="第二"
+        tools:layout="@layout/second_fragment" />
+    <fragment
+        android:id="@+id/thirdFragment"
+        android:name="com.wangzhenyu.catwatch.fragment.ThirdFragment"
+        android:label="第三"
+        tools:layout="@layout/third_fragment" />
 </navigation>
