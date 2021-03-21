@@ -4,22 +4,32 @@
 
     <item
         android:id="@+id/photo_menu_interior"
-        android:title="内部存储" >
+        android:title="内部存储">
         <menu>
-            <item android:id="@+id/create_file"
+            <item
+                android:id="@+id/create_file"
                 android:title="创建文件" />
-            <item android:id="@+id/open_file"
+            <item
+                android:id="@+id/open_file"
                 android:title="读取文件" />
         </menu>
     </item>
 
 
-
-
-
     <item
         android:id="@+id/photo_menu_external"
-        android:title="外部存储" />
+        android:title="外部存储">
+        <menu>
+            <item
+                android:id="@+id/create_file_external"
+                android:title="创建文件" />
+            <item
+                android:id="@+id/open_file_external"
+                android:title="读取文件" />
+        </menu>
+    </item>
+
+
     <item
         android:id="@+id/photo_menu_share"
         android:title="共享存储" />

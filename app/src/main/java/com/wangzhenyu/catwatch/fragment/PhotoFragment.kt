@@ -2,7 +2,10 @@ package com.wangzhenyu.catwatch.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Environment
+import android.util.Log
 import android.view.*
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +16,7 @@ import com.wangzhenyu.catwatch.adapter.PhotoListAdapter
 import com.wangzhenyu.catwatch.data.GirlPhoto
 import com.wangzhenyu.catwatch.databinding.FPhotoFragmentBinding
 import com.wangzhenyu.catwatch.util.LogUtil
+import com.wangzhenyu.catwatch.util.MyApplication
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
@@ -21,19 +25,18 @@ class PhotoFragment : Fragment() {
 
     companion object {
         const val internalStorageFileName: String = "internal.txt"
-        const val internalStorageFileContent: String =
-            "刘增艳，1996年8月31日出生于四川省 [1]  ，中国内地流行乐女歌手，SNH48 Team SII成员。\n" +
-                    "2015年7月25日，成为SNH48五期生 [2]  ；\n" +
-                    "12月4日，加入SNH48 Team XII，并在《剧场女神》公演中正式出道 [3-4]  。\n" +
-                    "2016年3月25日，随SNH48推出首张原创EP专辑《源动力》 [5]  ；\n" +
-                    "7月30日，随组合举办“比翼齐飞”SNH48第三届偶像年度人气总选举演唱会 [6]  ；\n" +
-                    "9月15日，担任SNH48 Team XII副队长 [7]  。\n" +
-                    "2017年7月29日，获得“我心翱翔”SNH48 GROUP第四届偶像年度人气总决选第63名。\n" +
-                    "2018年2月3日，SNH48首次重组后，她被重新分队至SNH48 Team SII；\n" +
-                    "7月28日，获得“砥砺前行”SNH48 GROUP第五届偶像年度人气总决选第30名 [8]  。\n" +
-                    "2019年7月27日，获得“新的旅程”SNH48 GROUP第六届偶像年度人气总决选第30名 [9]  。\n" +
-                    "2020年8月15日，获得“创造炙热的青春”SNH48 GROUP第七届偶像年度人气总决选第21名 [10]  ；\n" +
-                    "9月21日，加入丝芭传媒旗下电商女团浪彩少女AW9 [11]  。"
+        const val internalStorageFileContent: String = "Android 开发者\n" +
+                "文档\n" +
+                "指南\n" +
+                "请求应用权限\n" +
+                "您可能无法从当前所在的区域访问此资源。\n" +
+                "每款 Android 应用都在访问权受限的沙盒中运行。如果您的应用需要使用自身沙盒以外的资源或信息，您可以声明权限并设置提供此访问权限的权限请求。以下步骤是权限使用工作流程的一部分。\n" +
+                "\n" +
+                "如果您声明了任何危险权限，并且您的应用安装在搭载 Android 6.0（API 级别 23）或更高版本的设备上，那么您必须按照本指南中的步骤在运行时请求这些危险权限。\n" +
+                "\n" +
+                "如果您没有声明任何危险权限，或者您的应用安装在搭载 Android 5.1（API 级别 22）或更低版本的设备上，则系统会自动授予相应的权限，您无需完成本页剩下的任何步骤。\n" +
+                "\n" +
+                "基本原则"
     }
 
     private lateinit var viewModel: PhotoViewModel
@@ -46,6 +49,7 @@ class PhotoFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+
             R.id.create_file -> {
 
                 lifecycleScope.launch(Dispatchers.IO)
@@ -93,8 +97,6 @@ class PhotoFragment : Fragment() {
 
                 val files: Array<String> = requireContext().fileList()
                 LogUtil.d("StorageABC", files.contentToString())
-
-
                 try {
                     File(requireContext().cacheDir, "123.txt")
                         .inputStream().bufferedReader()
@@ -104,16 +106,48 @@ class PhotoFragment : Fragment() {
                         }
 
                 } catch (e: Exception) {
+                }
+                true
+            }
 
+            R.id.create_file_external -> {
+
+                lifecycleScope.launch(Dispatchers.IO)
+                {
+                    try {
+                        val appSpecificExternalDir =
+                            File(
+                                ContextCompat.getExternalCacheDirs(MyApplication.context)[1],
+                                "111.txt"
+                            ).outputStream()
+                                .bufferedWriter().use {
+                                    it.write(internalStorageFileContent)
+                                }
+
+                    } catch (e: Exception) {
+
+                    }
                 }
 
+                true
+            }
+            R.id.open_file_external -> {
+                lifecycleScope.launch(Dispatchers.IO)
+                {
+                    File(ContextCompat.getExternalCacheDirs(MyApplication.context)[1], "111.txt")
+                        .inputStream().bufferedReader()
+                        .useLines {
+                            val x = it.fold("Wzy") { a, b ->
+                                "$a$b"
+                            }
+                            LogUtil.d("StorageABC", x)
+                        }
+                }
 
                 true
             }
-            R.id.photo_menu_external -> {
-                LogUtil.d("StorageABC", "external")
-                true
-            }
+
+
             R.id.photo_menu_share -> {
                 LogUtil.d("StorageABC", "share")
                 true
