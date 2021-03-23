@@ -15,7 +15,6 @@
         </menu>
     </item>
 
-
     <item
         android:id="@+id/photo_menu_external"
         android:title="外部存储">
@@ -29,8 +28,22 @@
         </menu>
     </item>
 
-
     <item
         android:id="@+id/photo_menu_share"
-        android:title="共享存储" />
+        android:title="共享存储" >
+        <menu>
+            <item
+                android:id="@+id/photo_menu_one"
+                android:title="获取图片" />
+            <item
+                android:id="@+id/photo_menu_two"
+                android:title="保存图片" />
+            <item
+                android:id="@+id/photo_menu_three"
+                android:title="three" />
+            <item
+                android:id="@+id/photo_menu_four"
+                android:title="four" />
+        </menu>
+    </item>
 </menu>
