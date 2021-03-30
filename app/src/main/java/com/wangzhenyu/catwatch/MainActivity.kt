@@ -11,7 +11,7 @@ import androidx.navigation.ui.NavigationUI
 import com.wangzhenyu.catwatch.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
+//test
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
