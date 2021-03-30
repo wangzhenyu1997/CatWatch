@@ -30,9 +30,9 @@ class SecondFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(SecondViewModel::class.java)
 
+
         binding.secondFragmentViewPager2.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount() = 3
-
             override fun createFragment(position: Int) = when (position) {
                 0 -> OneFragment()
                 1 -> TwoFragment()

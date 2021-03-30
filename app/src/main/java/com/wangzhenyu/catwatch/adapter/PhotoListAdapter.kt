@@ -9,18 +9,19 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.wangzhenyu.catwatch.R
-import com.wangzhenyu.catwatch.data.GirlPhoto
+import com.wangzhenyu.catwatch.data.Hit
 
-class PhotoListAdapter : ListAdapter<GirlPhoto, PhotoListAdapter.VH>(diff) {
+
+class PhotoListAdapter : ListAdapter<Hit, PhotoListAdapter.VH>(diff) {
 
     companion object {
-        private val diff = object : DiffUtil.ItemCallback<GirlPhoto>() {
-            override fun areItemsTheSame(oldItem: GirlPhoto, newItem: GirlPhoto): Boolean {
+        private val diff = object : DiffUtil.ItemCallback<Hit>() {
+            override fun areItemsTheSame(oldItem: Hit, newItem: Hit): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: GirlPhoto, newItem: GirlPhoto): Boolean {
-                return oldItem.url == newItem.url
+            override fun areContentsTheSame(oldItem: Hit, newItem: Hit): Boolean {
+                return oldItem.largeImageURL == newItem.largeImageURL
             }
 
         }
@@ -31,7 +32,6 @@ class PhotoListAdapter : ListAdapter<GirlPhoto, PhotoListAdapter.VH>(diff) {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-
         return VH(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_photo_list_cell, parent, false)
@@ -40,10 +40,10 @@ class PhotoListAdapter : ListAdapter<GirlPhoto, PhotoListAdapter.VH>(diff) {
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         Glide.with(holder.itemView)
-            .load(getItem(position).url)
+            .load(getItem(position).largeImageURL)
             .placeholder(R.drawable.ic_loading)
+            .error(R.drawable.one)
             .into(holder.imageView)
-
     }
 
 

@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object CreateService {
 
-    private const val BASE_URL = "https://gank.io/api/v2/data/category/"
+    private const val BASE_URL = "https://pixabay.com/"
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
